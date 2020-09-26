@@ -1,0 +1,92 @@
+#include <iostream>
+#include <limits>
+
+using namespace std;
+
+int main()
+{
+    //Variables//
+    float num1;
+    float num2;
+    char znam;
+    string yn;
+    float celek;
+    string yn2;
+    float vysledek;
+    vysledek = 0;
+
+    //start kodu pozdeji pouzit pro loop celeho kodu//
+    start:
+    //prvni cislo//
+    cout << "Enter number: ";
+    cin >> num1;
+    //loop kdyz se nepovede zadat cislo//
+    while (true) {
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Thats not a number try again: ";
+            cin >> num1;
+        }
+        if (!cin.fail()) {
+            break;
+        }
+    }
+    //zadani operace//
+    cout << "Enter operation(+,-,*,/): ";
+    cin >> znam;
+    //druhe cislo//
+    cout << "Enter second number: ";
+    cin >> num2;
+
+    while (true) {
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Thats not a number try again: ";
+            cin >> num2;
+        }
+        if (!cin.fail()) {
+            break;
+        }
+        //vyhodnoceni co se stane s cisly + zachovani vysledku do celku//
+    }
+    switch (znam)
+    {
+    case '+':
+        vysledek += num1 + num2;
+        cout << num1 + num2 << endl;
+        break;
+    case '-':
+        vysledek += num1 - num2;
+        cout << num1 - num2 << endl;
+        break;
+    case '*':
+        vysledek += num1 * num2;
+        cout << num1 * num2 << endl;
+        break;
+    case '/':
+        vysledek += num1 / num2;
+        cout << num1 / num2 << endl;
+        break;
+    default:
+        cout << "Wrong input" << endl;
+    }
+    //zobrazeni vsech vypoctu dohromady//
+    cout << "Do you wanna look at all together(y/n): ";
+    cin >> yn2;
+
+    if (yn2 == "y") {
+        cout << vysledek << endl;
+    }
+    //loop na start//
+    cout << "Do you wanna go agian(y/n): ";
+    cin >> yn;
+
+    if (yn == "y") {
+        goto start;
+    }
+    else {
+        cout << "Ok, have a nice day.";
+    }
+}
